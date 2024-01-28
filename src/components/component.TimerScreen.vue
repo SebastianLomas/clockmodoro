@@ -6,10 +6,14 @@ defineProps({
 
 const isWriting = ref(false);
 
+const changeMode = function(e : object) {
+  isWriting.value = isWriting.value === true ? false : true;
+}
+
 </script>
 
 <template>
-  <div v-if="isWriting === false" class="timerScreen">
+  <div v-if="isWriting === false" class="timerScreen" @click="changeMode">
     <span class="timerScreen__time">
       00:00
     </span>
