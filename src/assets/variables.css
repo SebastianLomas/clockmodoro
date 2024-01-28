@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
+
+:root {
+  --background-color: #1d1d1d;
+  --timer-background-color: #332E2E;
+  --timer-screen-border: #E1CE1E;
+  --timer-font-color: #D1C5C5;
+  --timer-font: 'Kanit', sans-serif;
+}
