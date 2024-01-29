@@ -1,12 +1,24 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 defineProps({
-  symbol : String
+  symbol : String,
+  isActive : String
+
 });
+
 
 </script>
 
 <template>
-  <div class="button">
+  <div v-if="isActive === 'true'" class="button">
+    <div class="stop" v-if="symbol === 'stop'"></div>
+    <div class="play" v-if="symbol === 'play'"></div>
+    <div class="pause" v-if="symbol === 'pause'">
+      <div class="rectangle"></div>
+      <div class="rectangle"></div>
+    </div>
+  </div>
+  <div v-else class="button no-active">
     <div class="stop" v-if="symbol === 'stop'"></div>
     <div class="play" v-if="symbol === 'play'"></div>
     <div class="pause" v-if="symbol === 'pause'">
@@ -65,6 +77,24 @@ defineProps({
   width: 0.3rem;
   height: 1rem;
   background-color: var(--timer-background-color);
+}
+
+.no-active {
+  background-color: var(--background-color);
+}
+
+.no-active .stop, .no-active .rectangle {
+  background-color: var(--timer-background-color);
+}
+
+.no-active .play {
+  border-top: 0.7rem solid transparent;
+  border-bottom: 0.7rem solid transparent;
+  border-left: 0.9rem solid var(--timer-background-color);
+}
+
+.no-active:focus {
+  cursor: unset;
 }
 
 </style>
