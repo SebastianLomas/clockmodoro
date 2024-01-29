@@ -10,16 +10,22 @@ export const isStopActive = ref("false");
 export const isPauseActive = ref("false");
 
 export const changeMode = function() : void {
+  // changes from span to inputs and vice versa
   isScreenWritingMode.value = isScreenWritingMode.value === true ? false : true;
 }
 
 export const startTimer = function() {
+  // If the input are shown (instead of the span that just show the numbers), the codeis executed
   if(isScreenWritingMode.value) {
     const timerMinutes  = document.querySelector("#timerMinutes");
     const timerSeconds  = document.querySelector("#timerSeconds");
-    minutes.value = timerMinutes.value || "00";
-    seconds.value = timerSeconds.value || "00";
+    // if the inputs has values when play button is pressed, the span will show the value from the inputs
+    // else it is going to show "00:00"
+    minutes.value = resolveDigits(timerMinutes.value);
+    console.log(timerMinutes.value.length)
+    seconds.value = resolveDigits(timerSeconds.value);
     changeMode();
+    // changes the style of the button
     isPlayActive.value = "false";
     isPauseActive.value = "true";
     isStopActive.value = "true";
@@ -29,9 +35,12 @@ export const startTimer = function() {
 
 const countDown = function() {
   timer = setInterval(() => {
+    // Changed to number so can be substract
     let numberMinute : number = parseInt(minutes.value);
     let numberSeconds : number = parseInt(seconds.value);
 
+    // if seconds is 00, this is going to prevent it goes to -01
+    // and makes minutes to be reduced by 1
     if(numberSeconds == 0) {
       numberMinute--;
       numberSeconds = 59;
@@ -42,16 +51,31 @@ const countDown = function() {
     let stringMinute : string = numberMinute.toString();
     let stringSeconds : string = numberSeconds.toString();
 
-    if(stringMinute.length < 2) {
-      stringMinute = "0"+stringMinute;
-    }
-
-    if(stringSeconds.length < 2) {
-      stringSeconds = "0"+stringSeconds;
-    }
+    stringMinute = resolveDigits(stringMinute);
+    stringSeconds = resolveDigits(stringSeconds);
 
     minutes.value = stringMinute;
     seconds.value = stringSeconds;
 
   }, 1000);
+}
+
+const resolveDigits = function(number : string) : string {
+  // This prevents time be shown as "1" when only a "one digit number" is type
+  // It's going to be shown as "01" instead
+  let finalValue : string = "";
+  
+  switch(number.length) {
+    case(0):
+      finalValue = "00";
+      break;
+    case(1):
+      finalValue = "0"+number;
+      break;
+    default:
+      finalValue = number;
+      break;
+  }
+
+  return finalValue;
 }
