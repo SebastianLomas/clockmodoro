@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import ClockCompVue from './components/ClockComp.vue';
+import TimerComponent from './components/TimerComponent.vue';
 </script>
 
 <template>
-  <ClockCompVue />
+  <TimerComponent />
 </template>
 
 <style src="./assets/base.css">

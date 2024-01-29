@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import ButtonComp from './ButtonComp.vue';
-import componentTimerScreenVue from './component.TimerScreen.vue';
+
+import TimerScreen from './TimerScreenComponent.vue';
+import ButtonComponent from './ButtonComponent.vue';
+
 import { startTimer, isPlayActive, isStopActive, isPauseActive } from './utils';
 
 </script>
@@ -8,15 +10,15 @@ import { startTimer, isPlayActive, isStopActive, isPauseActive } from './utils';
 <template>
   <div class="timer">
     <label class="timer__screen" for="timerSeconds">
-      <componentTimerScreenVue writingMode="false" />
+      <TimerScreen writingMode="false" />
       <!-- <input class="timer__screen__input" type="text" name="timerInput" id="timerMinutes" value="00" placeholder="00" />
       <span class="timer__screen__divider">:</span>
       <input class="timer__screen__input" type="text" name="timerInput" id="timerSeconds" value="00" placeholder="00" /> -->
     </label>
     <div class="timer__buttons">
-      <ButtonComp symbol="play" :isActive="isPlayActive" @click="startTimer"/>
-      <ButtonComp symbol="pause" :isActive="isPauseActive" />
-      <ButtonComp symbol="stop" :isActive="isStopActive" />
+      <ButtonComponent symbol="play" :isActive="isPlayActive" @click="startTimer"/>
+      <ButtonComponent symbol="pause" :isActive="isPauseActive" />
+      <ButtonComponent symbol="stop" :isActive="isStopActive" />
 
     </div>
   </div>

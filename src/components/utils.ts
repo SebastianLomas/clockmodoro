@@ -5,9 +5,9 @@ export const isScreenWritingMode = ref(false);
 export const minutes = ref('00');
 export const seconds = ref('00');
 export let timer : number | undefined = undefined;
-export let isPlayActive = ref("true");
-export let isStopActive = ref("false");
-export let isPauseActive = ref("false");
+export const isPlayActive = ref("true");
+export const isStopActive = ref("false");
+export const isPauseActive = ref("false");
 
 export const changeMode = function() : void {
   isScreenWritingMode.value = isScreenWritingMode.value === true ? false : true;
