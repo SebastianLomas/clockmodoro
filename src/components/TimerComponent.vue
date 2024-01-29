@@ -2,6 +2,7 @@
 
 import TimerScreen from './TimerScreenComponent.vue';
 import ButtonComponent from './ButtonComponent.vue';
+import RingBellComponent from './RingBellComponent.vue';
 
 import { startTimer, isPlayActive, isStopActive, isPauseActive, pauseTimer, stopTimer } from './utils';
 
@@ -21,6 +22,7 @@ import { startTimer, isPlayActive, isStopActive, isPauseActive, pauseTimer, stop
       <ButtonComponent symbol="stop" :isActive="isStopActive" @click="stopTimer" />
 
     </div>
+    <RingBellComponent />
   </div>
 </template>
 

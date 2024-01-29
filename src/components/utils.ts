@@ -14,7 +14,7 @@ export const changeMode = function() : void {
   isScreenWritingMode.value = isScreenWritingMode.value === true ? false : true;
 }
 
-export const startTimer = function() {
+export const startTimer = function() : void {
   // If the input are shown (instead of the span that just show the numbers), the codeis executed
   if(isScreenWritingMode.value) {
     const timerMinutes  = document.querySelector("#timerMinutes");
@@ -94,6 +94,7 @@ const countDown = function() : void {
 
     if(numberMinute === 0 && numberSeconds === 0) {
       stopTimer();
+      ringTheBell();
     }
 
   }, 1000);
@@ -117,4 +118,9 @@ const resolveDigits = function(number : string) : string {
   }
 
   return finalValue;
+}
+
+const ringTheBell = function() : void {
+  const ringbell = document.querySelector("#ringbell");
+  ringbell.play();
 }
