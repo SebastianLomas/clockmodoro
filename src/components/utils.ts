@@ -22,7 +22,6 @@ export const startTimer = function() {
     // if the inputs has values when play button is pressed, the span will show the value from the inputs
     // else it is going to show "00:00"
     minutes.value = resolveDigits(timerMinutes.value);
-    console.log(timerMinutes.value.length)
     seconds.value = resolveDigits(timerSeconds.value);
     changeMode();
     // changes the style of the button
@@ -30,9 +29,33 @@ export const startTimer = function() {
     isPauseActive.value = "true";
     isStopActive.value = "true";
     countDown();
+  } else {
+    const timerComponent = document.querySelector(".timerScreen__time");
+    const [timerMinutes, timerSeconds] = timerComponent.textContent.split(":");
+
+    console.log(timer)
+    if((parseInt(timerMinutes) > 0 || parseInt(timerSeconds) > 0) && !timer) {
+      minutes.value = resolveDigits(timerMinutes);
+      seconds.value = resolveDigits(timerSeconds);
+      isPlayActive.value = "false";
+      isPauseActive.value = "true";
+      countDown();
+      console.log(timerMinutes, timerSeconds);
+    }
   }
 }
 
+export const pauseTimer = function() : void {
+  removeTimer();
+  isPlayActive.value = "true";
+  isPauseActive.value = "false";
+}
+
+const removeTimer = function() : void {
+  clearInterval(timer);
+  timer = undefined;
+}
+ 
 const countDown = function() {
   timer = setInterval(() => {
     // Changed to number so can be substract

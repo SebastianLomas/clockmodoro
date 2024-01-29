@@ -3,7 +3,7 @@
 import TimerScreen from './TimerScreenComponent.vue';
 import ButtonComponent from './ButtonComponent.vue';
 
-import { startTimer, isPlayActive, isStopActive, isPauseActive } from './utils';
+import { startTimer, isPlayActive, isStopActive, isPauseActive, pauseTimer } from './utils';
 
 </script>
 
@@ -17,7 +17,7 @@ import { startTimer, isPlayActive, isStopActive, isPauseActive } from './utils';
     </label>
     <div class="timer__buttons">
       <ButtonComponent symbol="play" :isActive="isPlayActive" @click="startTimer"/>
-      <ButtonComponent symbol="pause" :isActive="isPauseActive" />
+      <ButtonComponent symbol="pause" :isActive="isPauseActive" @click="pauseTimer" />
       <ButtonComponent symbol="stop" :isActive="isStopActive" />
 
     </div>
