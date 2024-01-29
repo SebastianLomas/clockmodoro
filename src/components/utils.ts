@@ -8,6 +8,8 @@ export let timer : number | undefined = undefined;
 export const isPlayActive = ref("true");
 export const isStopActive = ref("false");
 export const isPauseActive = ref("false");
+const ringbell = document.querySelector("#ringbell");
+
 
 export const changeMode = function() : void {
   // changes from span to inputs and vice versa
