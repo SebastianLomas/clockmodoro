@@ -49,6 +49,16 @@ export const pauseTimer = function() : void {
   removeTimer();
   isPlayActive.value = "true";
   isPauseActive.value = "false";
+  isStopActive.value = "true";
+}
+
+export const stopTimer = function() : void {
+  removeTimer();
+  const timerComponent = document.querySelector(".timerScreen__time");
+  timerComponent.textContent = "00:00";
+  isPlayActive.value = "true";
+  isPauseActive.value = "false";
+  isStopActive.value = "false";
 }
 
 const removeTimer = function() : void {
