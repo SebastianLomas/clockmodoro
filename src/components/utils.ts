@@ -66,7 +66,7 @@ const removeTimer = function() : void {
   timer = undefined;
 }
  
-const countDown = function() {
+const countDown = function() : void {
   timer = setInterval(() => {
     // Changed to number so can be substract
     let numberMinute : number = parseInt(minutes.value);
@@ -81,6 +81,8 @@ const countDown = function() {
       numberSeconds--;
     }
 
+    console.log(`${numberMinute}:${numberSeconds}`);
+
     let stringMinute : string = numberMinute.toString();
     let stringSeconds : string = numberSeconds.toString();
 
@@ -89,6 +91,10 @@ const countDown = function() {
 
     minutes.value = stringMinute;
     seconds.value = stringSeconds;
+
+    if(numberMinute === 0 && numberSeconds === 0) {
+      stopTimer();
+    }
 
   }, 1000);
 }
