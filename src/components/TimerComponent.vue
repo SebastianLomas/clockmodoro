@@ -3,6 +3,7 @@
 import TimerScreen from './TimerScreenComponent.vue';
 import ButtonComponent from './ButtonComponent.vue';
 import RingBellComponent from './RingBellComponent.vue';
+import StopButtonComponent from './StopButtonComponent.vue';
 
 import { startTimer, isPlayActive, isStopActive, isPauseActive, pauseTimer, stopTimer } from './utils';
 
@@ -10,6 +11,7 @@ import { startTimer, isPlayActive, isStopActive, isPauseActive, pauseTimer, stop
 
 <template>
   <div class="timer">
+    <StopButtonComponent />
     <label class="timer__screen" for="timerSeconds">
       <TimerScreen writingMode="false" />
       <!-- <input class="timer__screen__input" type="text" name="timerInput" id="timerMinutes" value="00" placeholder="00" />
@@ -32,10 +34,10 @@ import { startTimer, isPlayActive, isStopActive, isPauseActive, pauseTimer, stop
 .timer {
   width: 15.625rem;
   height: 15.625rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
+  display: grid;
+  /*flex-direction: column;*/
+  justify-content: center;
+  align-items: end;
   background-color: var(--timer-background-color);
 }
 
