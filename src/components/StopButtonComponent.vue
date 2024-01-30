@@ -1,8 +1,14 @@
-<script>
+<script setup lang="ts">
+defineProps({
+  isActive : String
+})
 </script>
 
 <template>
-<div class="stopButton">
+<div v-if="isActive === 'false'" class="stopButton">
+  <span class="stopButton__text">stop</span>
+</div>
+<div v-else class="stopButton no-active">
   <span class="stopButton__text">stop</span>
 </div>
 </template>
@@ -10,7 +16,7 @@
 <style>
 :root {
   --button-background-color: #F44343;
-  --button-pressed-background-color: #B81A1A;
+  --button-pressed-background-color: #C43535;
   --button-font-color: #B81A1A;
 }
 .stopButton {
@@ -33,5 +39,11 @@
   user-select: none;
   -webkit-user-select: none;
   color: var(--button-font-color);
+}
+
+.no-active {
+  align-items: center;
+  padding: 0;
+  background-color: var(--button-pressed-background-color);
 }
 </style>

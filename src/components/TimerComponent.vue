@@ -11,7 +11,7 @@ import { startTimer, isPlayActive, isStopActive, isPauseActive, pauseTimer, stop
 
 <template>
   <div class="timer">
-    <StopButtonComponent />
+    <StopButtonComponent isActive="true" />
     <label class="timer__screen" for="timerSeconds">
       <TimerScreen writingMode="false" />
       <!-- <input class="timer__screen__input" type="text" name="timerInput" id="timerMinutes" value="00" placeholder="00" />
