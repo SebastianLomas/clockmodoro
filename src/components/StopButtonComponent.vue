@@ -5,7 +5,7 @@ defineProps({
 </script>
 
 <template>
-<div v-if="isActive === 'false'" class="stopButton">
+<div v-if="isActive === 'true'" class="stopButton">
   <span class="stopButton__text">stop</span>
 </div>
 <div v-else class="stopButton no-active">
