@@ -130,6 +130,7 @@ const ringTheBell = function() : void {
 }
 
 export const stopBell = function() : void {
+  // Stops the bell
   const ringbell = document.querySelector("#ringbell");
   ringbell.pause();
   isRingButtonActive.value = "false";
