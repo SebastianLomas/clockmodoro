@@ -18,12 +18,12 @@ export const changeMode = function() : void {
 export const startTimer = function() : void {
   // If the input are shown (instead of the span that just show the numbers), the codeis executed
   if(isScreenWritingMode.value) {
-    const timerMinutes  = document.querySelector("#timerMinutes");
-    const timerSeconds  = document.querySelector("#timerSeconds");
+    const timerMinutes = (<HTMLInputElement> document.querySelector("#timerMinutes"));
+    const timerSeconds = (<HTMLInputElement> document.querySelector("#timerSeconds"));
     // if the inputs has values when play button is pressed, the span will show the value from the inputs
     // else it is going to show "00:00"
-    minutes.value = resolveDigits(timerMinutes.value);
-    seconds.value = resolveDigits(timerSeconds.value);
+    minutes.value = resolveDigits(timerMinutes?.value);
+    seconds.value = resolveDigits(timerSeconds?.value);
     changeMode();
     // changes the style of the button
     isPlayActive.value = "false";
@@ -31,8 +31,8 @@ export const startTimer = function() : void {
     isStopActive.value = "true";
     countDown();
   } else {
-    const timerComponent = document.querySelector(".timerScreen__time");
-    const [timerMinutes, timerSeconds] = timerComponent.textContent.split(":");
+    const timerComponent = (<HTMLInputElement>document.querySelector(".timerScreen__time"));
+    const [timerMinutes, timerSeconds] = timerComponent.textContent!.split(":");
 
     console.log(timer)
     if((parseInt(timerMinutes) > 0 || parseInt(timerSeconds) > 0) && !timer) {
@@ -55,7 +55,7 @@ export const pauseTimer = function() : void {
 
 export const stopTimer = function() : void {
   removeTimer();
-  const timerComponent = document.querySelector(".timerScreen__time");
+  const timerComponent = (<HTMLInputElement>document.querySelector(".timerScreen__time"));
   timerComponent.textContent = "00:00";
   isPlayActive.value = "true";
   isPauseActive.value = "false";
@@ -122,7 +122,7 @@ const resolveDigits = function(number : string) : string {
 }
 
 const ringTheBell = function() : void {
-  const ringbell = document.querySelector("#ringbell");
+  const ringbell = (<HTMLAudioElement>document.querySelector("#ringbell"));
   // "ringbell.load" makes audio to start from the beginning
   ringbell.load();
   ringbell.play();
@@ -131,7 +131,7 @@ const ringTheBell = function() : void {
 
 export const stopBell = function() : void {
   // Stops the bell
-  const ringbell = document.querySelector("#ringbell");
+  const ringbell = (<HTMLAudioElement>document.querySelector("#ringbell")); 
   ringbell.pause();
   isRingButtonActive.value = "false";
 }
