@@ -5,13 +5,13 @@ import ButtonComponent from './ButtonComponent.vue';
 import RingBellComponent from './RingBellComponent.vue';
 import StopButtonComponent from './StopButtonComponent.vue';
 
-import { startTimer, isPlayActive, isStopActive, isPauseActive, pauseTimer, stopTimer } from './utils';
+import { startTimer, isPlayActive, isStopActive, isPauseActive, isRingButtonActive, pauseTimer, stopTimer, stopBell } from './utils';
 
 </script>
 
 <template>
   <div class="timer">
-    <StopButtonComponent isActive="true" />
+    <StopButtonComponent :isActive="isRingButtonActive" @click="stopBell" />
     <label class="timer__screen" for="timerSeconds">
       <TimerScreen writingMode="false" />
       <!-- <input class="timer__screen__input" type="text" name="timerInput" id="timerMinutes" value="00" placeholder="00" />

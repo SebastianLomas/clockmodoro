@@ -8,8 +8,7 @@ export let timer : number | undefined = undefined;
 export const isPlayActive = ref("true");
 export const isStopActive = ref("false");
 export const isPauseActive = ref("false");
-const ringbell = document.querySelector("#ringbell");
-
+export const isRingButtonActive = ref("false");
 
 export const changeMode = function() : void {
   // changes from span to inputs and vice versa
@@ -124,5 +123,15 @@ const resolveDigits = function(number : string) : string {
 
 const ringTheBell = function() : void {
   const ringbell = document.querySelector("#ringbell");
+  // "ringbell.load" makes audio to start from the beginning
+  ringbell.load();
   ringbell.play();
+  isRingButtonActive.value = "true";
+}
+
+export const stopBell = function() : void {
+  // Stops the bell
+  const ringbell = document.querySelector("#ringbell");
+  ringbell.pause();
+  isRingButtonActive.value = "false";
 }
